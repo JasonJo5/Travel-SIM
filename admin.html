@@ -1036,6 +1036,25 @@ body[data-view="shop"] .totop{bottom:calc(96px + env(safe-area-inset-bottom,0px)
   .hero .pop .chip,.hero .trust>div{animation:enter .5s ease-out both}
   .hero .trust>div:nth-child(2){animation-delay:.06s}.hero .trust>div:nth-child(3){animation-delay:.12s}.hero .trust>div:nth-child(4){animation-delay:.18s}
 }
+
+/* phone layout fixes */
+@media (max-width:370px){.top-in{gap:6px}.brand{font-size:15px;gap:6px}.loc-btn{padding:0 8px;gap:5px;height:36px}.top-actions .icon-btn{width:36px;height:36px}}
+.sumline{gap:14px}.sumline>.num{flex:none;white-space:nowrap}
+.ptitle>div{min-width:0;flex:1}
+@media (max-width:720px){
+  .phead{flex-direction:column;align-items:stretch;gap:10px}
+  .ptitle{flex:none;width:100%;align-items:flex-start;gap:12px}
+  .ptitle .flag{margin-top:2px}
+  .ptitle h1{font-size:22px;line-height:1.25;overflow-wrap:anywhere}
+  .ptitle .muted{display:block;margin-top:2px;font-size:13.5px}
+  .phead-tags .pill{font-size:12px;padding:3px 10px}
+  .hc-tabs{margin-left:-16px;margin-right:-16px;padding:0 16px;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+  .hc-tabs button{padding:12px}
+  .codes{grid-template-columns:minmax(0,1fr);gap:2px}
+  .codes dt{margin-top:10px}
+  .codes dt:first-child{margin-top:0}
+  .codes dd{word-break:normal;overflow-wrap:anywhere}
+}
 </style>
 </head>
 <body>
@@ -1586,7 +1605,7 @@ function renderPicker(){
   if (!o.querySelector(".modal")) {
     o.innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pk-t"><div class="modal-head"><h2 id="pk-t">Choose destination</h2><button class="x" data-a="close" aria-label="Close">${ICON.x}</button></div>
       <div class="modal-body"><div class="pop"><span class="pop-label">Popular</span>${CFG.popular.map(id=>byId[id]).map(p=>`<button class="chip" data-a="pick-dest" data-v="${p.id}">${flag(p)}${esc(dn(p))}</button>`).join("")}</div>
-      <div class="search"><label>${ICON.search}<input id="pk-q" type="search" placeholder="Search a country (e.g. Japan, 일본)" autocomplete="off"></label></div>
+      <div class="search"><label>${ICON.search}<input id="pk-q" type="search" placeholder="${innerWidth<480?"Search a country":"Search a country (e.g. Japan, 일본)"}" autocomplete="off"></label></div>
       <div id="pk-dyn"></div></div></div>`;
   }
   $("#pk-dyn").innerHTML = `<div style="display:flex;flex-direction:column;gap:14px"><div class="ptabs" role="tablist"><button role="tab" data-a="p-tab" data-v="single" aria-selected="${P.tab==="single"}">Single country</button><button role="tab" data-a="p-tab" data-v="multi" aria-selected="${P.tab==="multi"}">Multi-country</button></div>${regions}${grid}</div>`;
