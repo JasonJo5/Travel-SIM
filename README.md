@@ -46,3 +46,4 @@ At this point the site works as a catalogue. To take orders, connect Firebase:
 - **Emails** (order confirmation, eSIM QR): add a Firebase Extension like *Trigger Email* or send them manually from the admin page details.
 - **Exchange rates** in `CURRENCIES` are fixed estimates. Update them from time to time.
 - **Refund policy and plan prices** are example values. Edit them to match your supplier.
+
